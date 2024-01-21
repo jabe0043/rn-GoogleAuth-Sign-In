@@ -22,6 +22,7 @@ export default function App() {
     androidClientId: '956198339505-7g5bm1jt4vvd714f9921nc809llpvd2o.apps.googleusercontent.com',
   });
 
+  //if Google.useAuthRequest response === success --> extract id_token --> create a GoogleAuthProvider credential --> sign in through Firebase Auth (signInWithCredential)
   useEffect(()=>{
     if(response?.type == "success"){
       const { id_token } = response.params;
@@ -30,7 +31,7 @@ export default function App() {
     }
   }, [response])
 
-
+// If user is authenticated --> update userInfo state var --> unsubscribe the auth listener (performance)
   useEffect(()=>{
     const unsub = onAuthStateChanged(auth, async(user)=>{
       if(user){

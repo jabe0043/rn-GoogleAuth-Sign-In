@@ -4,7 +4,7 @@ import { Text, View, SafeAreaView } from 'react-native'
 export default function HomeScreen(props) {
     return (
         <SafeAreaView>
-            <Text>Home Screen</Text>
+            <Text style={{color: "red"}}>Home Screen</Text>
         </SafeAreaView>
     )
 }
