@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import { Image, Text, TextInput, TouchableOpacity, View, SafeAreaView } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from './styles';
+import { AuthProvider, useAuth } from '../../../providers/authProvider';
 
-export default function LoginScreen({ navigation, promptAsync }) { 
+export default function LoginScreen({ navigation }) { 
+    const { userInfo, promptAsync } = useAuth();
 
     return (
         <SafeAreaView style={styles.container}>

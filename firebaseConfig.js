@@ -1,3 +1,4 @@
+//https://firebase.google.com/docs/auth/web/start
 import { initializeApp } from "firebase/app";
 import { getAuth } from 'firebase/auth'
 
@@ -11,8 +12,10 @@ const firebaseConfig = {
   appId: "1:573632564839:web:0adc20d16433928842cec2"
 };
 
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
+const app = initializeApp(firebaseConfig); // Initialize Firebase
+export const auth = getAuth(app); // Initialize Firebase Authentication and get a reference to the service
+
+
 
 
 // Google cloud services
