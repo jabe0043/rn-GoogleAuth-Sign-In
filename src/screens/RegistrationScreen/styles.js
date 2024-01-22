@@ -3,13 +3,15 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
-        width:"100%"
+        alignItems: 'center'
+    },
+    title: {
+
     },
     logo: {
         flex: 1,
-        height: 150,
-        width: 150,
+        height: 120,
+        width: 90,
         alignSelf: "center",
         margin: 30
     },
@@ -38,9 +40,6 @@ export default StyleSheet.create({
         color: 'white',
         fontSize: 16,
         fontWeight: "bold"
-    },
-    googleBtn:{
-        marginTop:100,
     },
     footerView: {
         flex: 1,

@@ -5,22 +5,70 @@ import styles from './styles';
 import { AuthProvider, useAuth } from '../../../providers/authProvider';
 
 export default function LoginScreen({ navigation }) { 
+    //-- Google sign in
     const { userInfo, promptAsync } = useAuth();
+
+    //-- Manual sign in
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    //Navigate to registration page
+    const onFooterLinkPress = () => {
+        navigation.navigate('Registration')
+    }
+
+    const onLoginPress = () => {
+    }
 
     return (
         <SafeAreaView style={styles.container}>
-            <View style={styles.buttonContainer}>
-                <KeyboardAwareScrollView
-                    style={{ flex: 1, width: '100%' }}
-                    keyboardShouldPersistTaps="always">
-                    <TouchableOpacity
-                        style={styles.button}
+                <KeyboardAwareScrollView style={{ flex: 1, width: '100%' }} keyboardShouldPersistTaps="always">
+                <Image
+                    style={styles.logo}
+                    source={require('../../../assets/icon.png')}
+                />
+
+                {/* Manual Sign in */}
+                <TextInput
+                    style={styles.input}
+                    placeholder='E-mail'
+                    placeholderTextColor="#aaaaaa"
+                    onChangeText={(text) => setEmail(text)}
+                    value={email}
+                    underlineColorAndroid="transparent"
+                    autoCapitalize="none"
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholderTextColor="#aaaaaa"
+                    secureTextEntry
+                    placeholder='Password'
+                    onChangeText={(text) => setPassword(text)}
+                    value={password}
+                    underlineColorAndroid="transparent"
+                    autoCapitalize="none"
+                />
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => onLoginPress()}>
+                    <Text style={styles.buttonTitle}>Log in</Text>
+                </TouchableOpacity>
+                <View style={styles.footerView}>
+                    <Text style={styles.footerText}>Don't have an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}>Sign up</Text></Text>
+                </View>
+
+
+                {/* Google Sign in */}
+                <View >
+                    <TouchableOpacity 
+                        style={[styles.button, styles.googleBtn]}
                         onPress={() => promptAsync()} 
                     >
                         <Text style={styles.buttonTitle}>Sign in with Google</Text>
                     </TouchableOpacity>
+                </View>
+
                 </KeyboardAwareScrollView>
-            </View>
         </SafeAreaView>
     )    
 }
