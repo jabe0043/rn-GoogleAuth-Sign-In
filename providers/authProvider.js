@@ -18,7 +18,7 @@ function AuthProvider({ children }) {
   });
 
 
-  //-- Triggered when google response obj changes during authentication process
+  //-- Triggered when google response obj changes during authentication process (Google Sign in)
   useEffect(() => {
     if (response?.type === 'success') { //if Google.useAuthRequest == success
       const { id_token } = response.params; //extract user id_token
@@ -40,7 +40,12 @@ function AuthProvider({ children }) {
     return () => unsub(); // unmount after sign-in attempt
   }, []);
 
-  return <AuthContext.Provider value={{ userInfo, promptAsync }}>{children}</AuthContext.Provider>;
+
+
+  //**** Email/Password Auth ****
+  //-- 
+
+  return <AuthContext.Provider value={{ userInfo, promptAsync, setUserInfo }}>{children}</AuthContext.Provider>;
 }
 
 

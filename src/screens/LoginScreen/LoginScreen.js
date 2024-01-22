@@ -4,20 +4,37 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import styles from './styles';
 import { AuthProvider, useAuth } from '../../../providers/authProvider';
 
+// Firebase email/password auth (manual sign in -- move to authProvider.js)
+import { auth } from '../../../firebaseConfig'; //reference to my apps auth service 
+import { signInWithEmailAndPassword } from "firebase/auth"; 
+
+
 export default function LoginScreen({ navigation }) { 
     //-- Google sign in
     const { userInfo, promptAsync } = useAuth();
 
-    //-- Manual sign in
+    //-- Manual sign in state vars
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    //Navigate to registration page
-    const onFooterLinkPress = () => {
-        navigation.navigate('Registration')
+    //-- Sign in with email/password
+    const onLoginPress = () => {
+    signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            console.log("USER SIGN IN:", user);
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.warn(errorCode, errorMessage);
+        });
     }
 
-    const onLoginPress = () => {
+    //-- Navigate to registration page
+    const onFooterLinkPress = () => {
+        navigation.navigate('Register')
     }
 
     return (

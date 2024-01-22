@@ -34,7 +34,7 @@ function AppContent() {
         ) : (
           <>
             <Stack.Screen name="Login" component={LoginScreen} />
-            <Stack.Screen name="Registration" component={RegistrationScreen} />
+            <Stack.Screen name="Register" component={RegistrationScreen} />
           </>
         )}
       </Stack.Navigator>

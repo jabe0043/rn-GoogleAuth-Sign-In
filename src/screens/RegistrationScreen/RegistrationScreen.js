@@ -3,6 +3,12 @@ import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from './styles';
 
+// Firebase password auth
+import { auth } from '../../../firebaseConfig'; //reference to my apps auth service 
+import { createUserWithEmailAndPassword } from "firebase/auth"; 
+
+
+
 export default function RegistrationScreen({navigation}) {
     const [fullName, setFullName] = useState('')
     const [email, setEmail] = useState('')
@@ -13,7 +19,24 @@ export default function RegistrationScreen({navigation}) {
         navigation.navigate('Login')
     }
 
+    //-- Initiate REGISTRATION
     const onRegisterPress = () => {
+      if (password !== confirmPassword) {
+        alert("Passwords don't match.")
+        return
+      }
+    //Create a password-based account
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      console.log("NEW USER:", user);
+      //TODO: see next steps section: https://firebase.google.com/docs/auth/web/password-auth 
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      print(errorCode, errorMessage);
+    });
     }
 
     return (
