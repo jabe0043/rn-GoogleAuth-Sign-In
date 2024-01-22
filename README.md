@@ -1,6 +1,6 @@
-this is the base code for a user sign-in flow.
-- To test the implementation firebase authentication, copy this repo and build from there.
-
+Test code for integrating the following with Firebase:
+- google auth sig-in and 
+- manual email+password registration/sign-in 
 
 GUIDES:
 *Google auth setup*
