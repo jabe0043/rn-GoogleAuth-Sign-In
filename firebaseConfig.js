@@ -1,6 +1,7 @@
 //https://firebase.google.com/docs/auth/web/start
 import { initializeApp } from "firebase/app";
-import { getAuth } from 'firebase/auth'
+import { getAuth, getReactNativePersistence } from 'firebase/auth'
+
 
 //Firebase project configuration (google-sign-in-flow);
 const firebaseConfig = {

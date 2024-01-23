@@ -21,21 +21,21 @@ export default function RegistrationScreen({navigation}) {
 
     //-- Initiate REGISTRATION
     const onRegisterPress = () => {
-      if (password !== confirmPassword) {
+    if (password !== confirmPassword) {
         alert("Passwords don't match.")
         return
-      }
+    }
     //Create a password-based account
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      const user = userCredential.user;
-      console.log("NEW USER:", user);
+        const user = userCredential.user;
+        console.log("NEW USER:", user);
       //TODO: see next steps section: https://firebase.google.com/docs/auth/web/password-auth 
     })
     .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      print(errorCode, errorMessage);
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        print(errorCode, errorMessage);
     });
     }
 

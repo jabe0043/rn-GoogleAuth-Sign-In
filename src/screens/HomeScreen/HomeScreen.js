@@ -7,7 +7,7 @@ import { auth } from '../../../firebaseConfig'; //reference to my apps auth serv
 import { signOut } from "firebase/auth"; 
 
 export default function HomeScreen({ navigation }) {
-    const { userInfo, promptAsync, setUserInfo } = useAuth();
+    const { userInfo, promptAsync, setUserInfo, signOutUser } = useAuth();
 
     if(userInfo){
         console.log('user authenticated:', JSON.stringify({
@@ -25,7 +25,8 @@ export default function HomeScreen({ navigation }) {
                 onPress={() => {
                     signOut(auth)
                     .then(() => {
-                        setUserInfo(null)
+                        signOutUser();
+                        // setUserInfo(null)
                     })
                     .catch((error) => {console.log("Error signing out", error)});                
                 }}
