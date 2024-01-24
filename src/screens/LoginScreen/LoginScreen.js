@@ -19,6 +19,7 @@ export default function LoginScreen({ navigation }) {
 
     //-- Sign in with email/password
     const onLoginPress = () => {
+        //TODO: move to authprovider
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Signed in 

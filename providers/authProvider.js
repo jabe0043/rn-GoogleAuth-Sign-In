@@ -46,7 +46,6 @@ function AuthProvider({ children }) {
 
   //-- Triggered when google response obj changes during authentication process (Google Sign in)
   useEffect(() => {
-    console.log("1");
     checkLocalStorage();
     if (response?.type === 'success') { //if Google.useAuthRequest == success
       const { id_token } = response.params; //extract user id_token
@@ -58,7 +57,6 @@ function AuthProvider({ children }) {
 
   //-- Set up auth state change listener to listen for sign-in/sign-out (Triggered once)
   useEffect(() => {
-    console.log("2");
     const unsub = onAuthStateChanged(auth, async (user) => {
       if (user) {
         setUserInfo(user); //update state var
